@@ -1,1 +1,1 @@
-export const DB_NAME= abhi_youtube
+export const DB_NAME = "abhi_youtube"
