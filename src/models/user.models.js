@@ -64,17 +64,21 @@ userSchema.methods.isPasswordMatch = async function (password)
 
 userSchema.methods.generateAccessToken =  function ()
 {
-    jwt.sign({
+ 
+ const accessToken =   jwt.sign({
     _id:this._id,
     email:this.email,
     username:this.username,
     fullName:this.fullName
     },process.env.ACCESS_TOKEN_SECRET,{expiresIn:process.env.ACCESS_TOKEN_EXPIRE})
+
+    return accessToken
 }
 
 userSchema.methods.generaterefreshToken = function()
 {
-    jwt.sign({
+   
+   const refreshToken = jwt.sign({
         _id:this._id
     },
     process.env.REFRESH_TOKEN_SECRET,
@@ -82,6 +86,8 @@ userSchema.methods.generaterefreshToken = function()
         expiresIn:process.env.REFRESH_ROKEN_EXPIRE
     }
     )
+
+    return refreshToken
 }
 
 
